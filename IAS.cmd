@@ -8,10 +8,9 @@
 ::
 ::   IDM Activation Script (IAS)
 ::
-::   Homepages: https://github.com/lstprjct/IDM-Activation-Script
-::              https://t.me/ModByPiash/5
+::   Homepages: https://github.com/hanmaoye/IDM-Activation-Script
 ::
-::       Telegram: @Stripe_op
+::       
 ::
 ::============================================================================
 
@@ -63,7 +62,7 @@ exit /b
 ::========================================================================================================================================
 
 set "blank="
-set "mas=https://github.com/lstprjct/IDM-Activation-Script/wiki/"
+set "mas=https://github.com/hanmaoye/IDM-Activation-Script/wiki/"
 
 ::  Check if Null service is working, it's important for the batch script
 
@@ -265,6 +264,34 @@ if defined quedit goto :skipQE
 
 ::========================================================================================================================================
 
+::  Check for updates
+
+set -=
+set old=
+
+for /f "delims=[] tokens=2" %%# in ('ping -4 -n 1 iasupdatecheck.mass%-%grave.dev') do (
+if not [%%#]==[] (echo "%%#" | find "127.69" %nul1% && (echo "%%#" | find "127.69.%iasver%" %nul1% || set old=1))
+)
+
+if defined old (
+echo ________________________________________________
+%eline%
+echo You are running outdated version IAS %iasver%
+echo ________________________________________________
+echo:
+if not %_unattended%==1 (
+echo [1] Get Latest IAS
+echo [0] Continue Anyway
+echo:
+call :_color %_Green% "Enter a menu option in the Keyboard [1,0] :"
+choice /C:10 /N
+if !errorlevel!==2 rem
+if !errorlevel!==1 (start https://github.com/WindowsAddict/IDM-Activation-Script & start %mas%/idm-activation-script & exit /b)
+)
+)
+
+::========================================================================================================================================
+
 cls
 title  IDM Activation Script %iasver%
 
@@ -287,7 +314,7 @@ goto done2
 
 set _sid=
 for /f "delims=" %%a in ('%psc% "([System.Security.Principal.NTAccount](Get-WmiObject -Class Win32_ComputerSystem).UserName).Translate([System.Security.Principal.SecurityIdentifier]).Value" %nul6%') do (set _sid=%%a)
- 
+
 reg query HKU\%_sid%\Software %nul% || (
 for /f "delims=" %%a in ('%psc% "$explorerProc = Get-Process -Name explorer | Where-Object {$_.SessionId -eq (Get-Process -Id $pid).SessionId} | Select-Object -First 1; $sid = (gwmi -Query ('Select * From Win32_Process Where ProcessID=' + $explorerProc.Id)).GetOwnerSid().Sid; $sid" %nul6%') do (set _sid=%%a)
 )
@@ -373,8 +400,7 @@ echo:
 call :_color2 %_White% "             " %_Green% "Create By Piash"
 echo:            ___________________________________________________ 
 echo:
-echo:               Telegram: @ModByPiash
-echo:               Github: https://github.com/lstprjct
+echo:               Github: https://github.com/hanmaoye
 echo:            ___________________________________________________ 
 echo:                                                               
 echo:               [1] Activate
@@ -392,7 +418,7 @@ choice /C:123450 /N
 set _erl=%errorlevel%
 
 if %_erl%==6 exit /b
-if %_erl%==5 start https://github.com/lstprjct/IDM-Activation-Script & goto MainMenu
+if %_erl%==5 start https://github.com/hanmaoye/IDM-Activation-Script& goto MainMenu
 if %_erl%==4 start https://www.internetdownloadmanager.com/download.html & goto MainMenu
 if %_erl%==3 goto _reset
 if %_erl%==2 (set frz=1&goto :_activate)
@@ -723,11 +749,11 @@ foreach ($regPath in $regPaths) {
     if (($regPath -match "HKEY_USERS") -and ($HKCUsync -ne $null)) {
         continue
     }
-	
+
 	Write-Host
 	Write-Host "Searching IDM CLSID Registry Keys in $regPath"
 	Write-Host
-	
+
     $subKeys = Get-ChildItem -Path $regPath -ErrorAction SilentlyContinue -ErrorVariable lockedKeys | Where-Object { $_.PSChildName -match '^\{[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}\}$' }
 
     foreach ($lockedKey in $lockedKeys) {
@@ -739,7 +765,7 @@ foreach ($regPath in $regPaths) {
     if ($subKeys -eq $null) {
 	continue
 	}
-	
+
 	$subKeysToExclude = "LocalServer32", "InProcServer32", "InProcHandler32"
 
     $filteredKeys = $subKeys | Where-Object { !($_.GetSubKeyNames() | Where-Object { $subKeysToExclude -contains $_ }) }
