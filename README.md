@@ -1,120 +1,136 @@
-# IDM Activation Script
-An open-source tool to activate and reset the trial of [Internet Download Manager](https://www.internetdownloadmanager.com/)
+# IDM 激活脚本
+一个开源工具，用于激活和重置试用期 [Internet Download Manager](https://www.internetdownloadmanager.com/)
 
-# Disclaimer
-I want to clarify that I am not the original author of this script. When I initially published this script on GitHub, the primary author had not yet created an official GitHub repository. As a result, the only available option for users was to visit the [official forum](https://www.nsaneforums.com/topic/371047--/?do=findComment%5E&comment=1578647) to download and utilize the script, later they created the [Github](https://github.com/WindowsAddict/IDM-Activation-Script) repository. My main aim in creating this repository was to streamline the process for users. Furthermore, I ensured to credit the original creators of the script as a sign of respect for their work.
+# 免责声明
+我想澄清一下，我不是这个脚本的原作者。我创建这个仓库的主要目的是为中文用户简化流程。此外，作为对脚本原作者工作的尊重，我确保注明了他们。
 
-# Features
-* IDM freeze trial and activation with registry key lock method
-* Activation and trial persist even after installing IDM updates
-* IDM trial reset
-* Fully open source
-* Based on the transparent batch script
+# 特点
+* IDM 冻结试用及使用注册表键锁定方法进行激活
+* 即使安装了 IDM 更新，激活和试用仍然存在。
+* IDM 试用重置
+* 完全开源
+* 基于透明批处理脚本
 
-# IAS Latest Release
-Last Release - v1.2 (12-Feb-2024)
-[GitHub](https://github.com/lstprjct/IDM-Activation-Script)
+# IAS 最新版本
+最新版本 - v1.2 (12-Feb-2024)
+[GitHub](https://github.com/hanmaoye/IDM-Activation-Script)
 
-# Download / How to use it?
-First fresh install [Internet Download Manager](https://www.internetdownloadmanager.com/). Make sure previous cracks/patches are removed/uninstalled if there are any.
-After that follow the below steps to activate it.
+# 下载 / 如何使用它？
+首先安装最新的 [Internet Download Manager](https://www.internetdownloadmanager.com/). 如果有任何以前的破解补丁，请确保将其删除或卸载。
+之后，按照以下步骤激活它。
 
-# Note
-* 📌 The activation option is currently not working in the script, use the Freeze trial option to lock the 30-day trial period for the lifetime.
+# 日志
+* 📌 该激活选项目前在脚本中无法使用，请使用 “冻结试用” 选项将 30 天的试用期锁定为终身有效。
 
-# Method 1 - PowerShell
-(Recommended)
+# 方法 1 - PowerShell
+(推荐的)
 
-* Right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).
-* Copy-paste the below code and press enter
-*`iex(irm is.gd/idm_reset)`
-* You will see the activation options, follow the on-screen instructions.
-* That’s all.
+* 右键单击 Windows 开始菜单，然后选择 “PowerShell” 或 “终端”（不要选 “CMD命令提示符”）。
 
-# Method 2 - Traditional
+* 复制粘贴下面的代码并按回车键
 
-* Download the file from [GitHub](https://github.com/lstprjct/IDM-Activation-Script/archive/refs/heads/main.zip)
-* Right-click on the downloaded zip file and extract
-* In the extracted folder, run the file named `IAS.cmd`
-* You will see the activation options, and follow onscreen instructions.
-* That’s all.
+  ```shell
+  iex(irm is.gd/iAS)
+  ```
 
-# Info
-## Freeze Trial
-* IDM provides a 30-day trial period, you can use this option in the script to lock this trial period for the lifetime so that you won’t have to reset the trial again and your trial won’t expire.
-* This method requires the Internet at the time of applying this option.
-* IDM updates can be installed directly without having to freeze it again.
+  或
 
-## Activation
-(***Currently not working**)
+  ```shell
+  iwr -useb https://raw.githubusercontent.com/hanmaoye/IDM-Activation-Script/main/IAS.ps1 | iex
+  ```
 
-* This script applies the registry lock method to activate the Internet download manager (IDM).
-* This method requires the Internet at the time of activation.
-* IDM updates can be installed directly without having to activate it again.
-* After the activation, if in some cases, IDM starts to show an activation nag screen, then just run the activation option again without using the reset option.
+  或
 
-## Reset IDM Activation / Trial
-* Internet download manager provides a 30-day trial period, you can use this script to reset this Activation / Trial period whenever you want.
-* This option also can be used to restore status if in case IDM reports a fake serial key and other similar errors.
+  ```shell
+  iwr -useb https://is.gd/iAS | iex
+  ```
 
-## OS requirement
-* The project is supported for Windows 7/8/8.1/10/11 and their Server equivalent.
-* The PowerShell method to run IAS is supported on Windows 8 and higher.
+* 你将看到激活选项，请按照屏幕上的说明操作。
 
-## Advanced Info
-* To activate in unattended mode, run the script with the /act parameter.
-* To freeze the trial in unattended mode, run the script with the /frz parameter.
-* To reset in unattended mode, run the script with the /res parameter.
+* 就这些。
 
-# How does it work?
-* IDM stores the data related to trial and activation across various registry keys. Some of these keys are locked to protect them from tampering and data is stored in a pattern to track the fake serial issue and the remaining trial days. To activate it, the script here simply generates those registry keys by triggering a few downloads in IDM, identifies those registry keys, and locks them so IDM can’t edit and view them. That way IDM cannot show the warning that it’s activated with a fake serial key.
+# 方法 2 - Traditional
 
-# Troubleshoot
-* Browser Integration Fix: [Chrome](https://www.internetdownloadmanager.com/register/new_faq/bi9.html) - [Firefox](https://www.internetdownloadmanager.com/register/new_faq/bi4.html)
-* Reach out to us on [Telegram](https://t.me/ModByPiash) with an error screenshot.
-[![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/512px-Telegram_logo.svg.png)](https://t.me/ModByPiash)
+* 从 [GitHub](https://github.com/hanmaoye/IDM-Activation-Script/archive/refs/heads/main.zip)下载该文件
+* 右键点击下载的压缩文件并解压
+* 右键点击下载的压缩文件并解压 `IAS.cmd`
+* 你将看到激活选项，并按照屏幕上的说明操作。
+* 就这些。
 
-# Changelog
+# 信息
+## 冻结试验
+* IDM 提供 30 天的试用期，你可以在脚本中使用此选项将此试用期锁定终身，这样你就无需再次重置试用期，而且你的试用期也不会过期。
+* 应用此选项时，此方法需要联网。
+* IDM更新可以直接安装，无需再次冻结。
+
+## 激活
+(***目前无法正常工作**)
+
+* 此脚本应用注册表锁定方法来激活互联网下载管理器（IDM）。
+* 此方法在激活时需要联网。
+* IDM更新可以直接安装，无需再次激活。
+* 激活后，如果在某些情况下，IDM开始显示激活提示屏幕，那么只需再次运行激活选项，无需使用重置选项。
+
+## 重置IDM激活/试用
+* 互联网下载管理器提供30天的试用期，你可以随时使用此脚本重置激活/试用期。
+* 此选项也可用于在IDM报告假序列号密钥及其他类似错误的情况下恢复状态。
+
+## 操作系统要求
+* 该项目支持 Windows 7/8/8.1/10/11 及其对应的服务器版本。
+* 在Windows 8及更高版本上支持使用PowerShell方法运行IAS。
+
+## 高级信息
+* 要在无人参与模式下激活，请使用 /act 参数运行脚本。
+* 要在无人值守模式下冻结试验，请使用 /frz 参数运行脚本。
+* 要在无人参与模式下重置，请使用/res参数运行脚本。
+
+# 它是如何工作的？
+* IDM会在各种注册表项中存储与试用和激活相关的数据。其中一些注册表项被锁定，以防止篡改，并且数据以一种特定模式存储，用于追踪伪造序列号问题和剩余试用天数。要激活它，此处的脚本只需通过在IDM中触发一些下载来生成这些注册表项，识别这些注册表项并将其锁定，这样IDM就无法编辑和查看它们。通过这种方式，IDM就不会显示它是使用伪造序列号激活的警告。 
+
+# 排查故障
+* 浏览器集成修复: [Chrome](https://www.internetdownloadmanager.com/register/new_faq/bi9.html) - [Firefox](https://www.internetdownloadmanager.com/register/new_faq/bi4.html)
+
+# 变更日志
 ## v1.2
-* Added back activation option with a randomized name, email, and key in registration details along with a warning that it’s not working for some users, the recommended option is to use Freeze trial.
+* 添加了带有随机生成的姓名、电子邮件和注册详细信息中的密钥的激活选项，并附带警告，称该选项对部分用户不起作用，建议的选项是使用冻结试用。
 ## v1.1
-* IDM update 6.42b3 has started showing fake serial popups with IAS activation, due to this we have removed the activation option and replaced it with the Freeze trial option to lock the 30-day trial period for the lifetime.
-* Now the script will disable quick-edit in CMD windows using Powershell instead of editing the registry, thanks to @abbodi1406 for the code and @awuctl for the idea.
-* Code to relaunch script with conhost.exe to avoid terminal app is now merged in quick-edit disable code, thanks to @abbodi1406.
-Updated full code from [WindowsAddict ](https://massgrave.dev/idm-activation-script)
+* IDM 6.42b3版本更新后，在使用IAS激活时开始出现虚假的序列号弹窗。因此，我们移除了激活选项，取而代之的是“冻结试用”选项，以便终身锁定30天的试用期。 
+* 现在，该脚本将使用Powershell禁用CMD窗口中的快速编辑功能，而无需编辑注册表。感谢@abbodi1406提供的代码，以及@awuctl提出的想法。
+* 用于通过conhost.exe重新启动脚本以避免终端应用程序的代码，现已合并到禁用快速编辑的代码中，感谢@abbodi1406。
+来自 [WindowsAddict ](https://massgrave.dev/idm-activation-script)的更新完整代码
 ## v1.0
-* Added the code to relaunch the script with conhost.exe if the script is running from the terminal app.
-* Fixed an issue in getting the current user account SID.
+* 添加了代码，以便在脚本从终端应用程序运行时使用 conhost.exe 重新启动脚本。
+* 修复了获取当前用户账户安全标识符（SID）时的一个问题。
 ## v0.9
-* Fixed an issue where the script can not activate and reset IDM in non-admin user accounts.
-* Fixed an issue where the script incorrectly shows that IDM is activated.
-* Fixed an issue where a fake serial pop-up may appear. The script will also show the info to run the activation option again without using the reset option.
-* IDM registry scanning and locking code is now written in Powershell.
-* The script update checker code is added to the script.
-* The script will now disable quick edit mode temporarily because users often click inside the script window and it pauses the script.
-* The script will back up the CLSISD registry keys before performing operations on them.
-* Many error checks are added to better identify the issues.
+* 修复了一个脚本在非管理员用户账户中无法激活和重置IDM的问题。
+* 修复了一个脚本错误显示IDM已激活的问题。
+* 修复了可能出现虚假序列号弹窗的问题。该脚本还将显示信息，以便在不使用重置选项的情况下再次运行激活选项。
+* IDM注册表扫描和锁定代码现在用Powershell编写。
+* 该脚本更新检查器代码已添加到脚本中。
+* 该脚本现在将暂时禁用快速编辑模式，因为用户经常在脚本窗口内点击，这会使脚本暂停。
+* 该脚本将在对CLSISD注册表项执行操作之前对其进行备份。
+* 增加了许多错误检查，以便更好地识别问题。
 ## v0.8
-* Move the project to [Github](https://github.com/lstprjct/IDM-Activation-Script)
-* Minor bug fixes
-* Add info to inform users that empty registry keys are being deleted when the script deletes a lot of them
+* 将项目转移到 [Github](https://github.com/hanmaoye/IDM-Activation-Script)
+* 小错误修复
+* 添加信息以告知用户，当脚本删除大量空注册表项时，这些空注册表项正在被删除。
 
-# Screenshots
+# 屏幕截图
 ![IAS](https://github.com/lstprjct/IDM-Activation-Script/assets/88411318/fafdb481-c497-464f-b1e6-9a4254eaf880)
 
 ![IAS_Freeze_Trial](https://github.com/lstprjct/IDM-Activation-Script/assets/88411318/76b36582-8cf4-4d1e-870f-6e8e57c80a87)
 
-# Credits
+# 致谢
 
-|                                             |                                                                                                                                                                                                                                        |
-|-------------------|-----------------------------------------------------|
-| Dukun Cabul                                 | Original researcher of this IDM trial reset and activation logic, made an Autoit tool for these methods, [IDM-AIO_2020_Final](https://nsaneforums.com/topic/371047-discussion-internet-download-manager-fixes/page/8/#comment-1632062) |
-| AveYo aka BAU                               | [reg_own lean and mean snippet](https://pastebin.com/XTPt0JSC)                                                                                                                                                                         |
-| [abbodi1406](https://github.com/abbodi1406) | Help in coding                                                                                                                                                                                                                         |
-| WindowsAddict                               | Original [IAS](https://github.com/WindowsAddict/IDM-Activation-Script) Author                                                                                                                                                                                                                             |
+|                                             |                                                              |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| Dukun Cabul                                 | 此IDM试用重置和激活逻辑的最初研究者，为这些方法制作了一款Autoit工具, [IDM-AIO_2020_Final](https://nsaneforums.com/topic/371047-discussion-internet-download-manager-fixes/page/8/#comment-1632062) |
+| AveYo aka BAU                               | [reg_own lean and mean snippet](https://pastebin.com/XTPt0JSC) |
+| [abbodi1406](https://github.com/abbodi1406) | 编码方面的帮助                                               |
+| WindowsAddict                               | 最初的 [IAS](https://github.com/WindowsAddict/IDM-Activation-Script) 作者 |
 
-And thanks to the IAS users for their interest, feedback, and assistance.
+感谢IAS的用户们的关注、反馈与协助。
 
 ------------------------------------------------------------------------
 
-Made with Love ❤️
+用爱制作 ❤️
